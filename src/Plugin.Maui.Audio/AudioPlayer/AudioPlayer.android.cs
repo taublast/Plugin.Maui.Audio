@@ -88,7 +88,7 @@ partial class AudioPlayer : IAudioPlayer
 			// now we are going to update the speed parameter of the actual audio player
 
 			// allow defaults ensures that we can play the audio in case the pitch value is not set. When the audioplayer is paused, PlaybackParams may not be what we would like it to be
-			var parms = (player.PlaybackParams.AllowDefaults() ?? new PlaybackParams().AllowDefaults())?.SetSpeed(internalSpeed) ?? throw new ArgumentException("speed value not supported");
+			var parms = (player.PlaybackParams)?.SetSpeed(internalSpeed) ?? throw new ArgumentException("speed value not supported");
 
 			// this ensures that the audio will fail if the speed is not supported, otherwise android simply continues but does not play any audio
 			// https://developer.android.com/reference/android/media/PlaybackParams
