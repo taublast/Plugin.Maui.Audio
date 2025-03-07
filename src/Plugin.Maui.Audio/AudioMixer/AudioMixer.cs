@@ -92,6 +92,19 @@ public class AudioMixer : IDisposable
 	}
 
 	/// <summary>
+	/// Play already prepared channel
+	/// </summary>
+	/// <param name="channelIndex"></param>
+	/// <param name="loop"></param>
+	public void Play(int channelIndex, bool loop = false)
+	{
+		ValidateChannelIndex(channelIndex);
+		var player = channels[channelIndex];
+		player.Loop = loop;
+		player.Play();
+	}
+
+	/// <summary>
 	/// Stops playback on the specified channel.
 	/// </summary>
 	/// <param name="channelIndex">The index of the channel to stop.</param>
